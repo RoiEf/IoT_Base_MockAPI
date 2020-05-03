@@ -1,0 +1,29 @@
+{
+  "name": "iot_base_mock_api",
+  "version": "1.0.0",
+  "description": "Mock API for the IoT Base Front development",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RoiEf/IoT_Base_MockAPI.git"
+  },
+  "keywords": [],
+  "author": "Roi Efrati",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RoiEf/IoT_Base_MockAPI/issues"
+  },
+  "homepage": "https://github.com/RoiEf/IoT_Base_MockAPI#readme",
+  "devDependencies": {
+    "nodemon": "^1.19.3"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "morgan": "^1.9.1"
+  }
+}
