@@ -4,11 +4,9 @@
  * Required External Modules
  */
 const express = require("express");
-const loginRoutes = require("./routes/loginRT");
-// const aboutRoutes = require("./api/about");
-// const servicesRoutes = require("./api/services");
-// const iotApi = require("./api/IoT_API");
-// const PublicRoutes = require("./api/public");
+const loginRT = require("./routes/loginRT");
+const updatesRT = require("./routes/updatesRT");
+const homeRT = require("./routes/homeRT");
 
 /**
  *  App Configuration
@@ -30,11 +28,9 @@ app.use(bodyParser.json());
 /**
  * Routes Definitions
  */
-app.use("/login", loginRoutes);
-app.get("/", (req, res) => {
-  res.status(200).send("Base IoT Mock API");
-});
-// app.use("/services", servicesRoutes);
+app.use("/", homeRT);
+app.use("/login", loginRT);
+app.use("/updates", updatesRT);
 // app.use("/iotApi", iotApi);
 // app.use("/public", PublicRoutes);
 
