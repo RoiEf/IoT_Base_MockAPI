@@ -4,7 +4,7 @@
  * Required External Modules
  */
 const express = require("express");
-
+const loginRoutes = require("./routes/loginRT");
 // const aboutRoutes = require("./api/about");
 // const servicesRoutes = require("./api/services");
 // const iotApi = require("./api/IoT_API");
@@ -13,27 +13,27 @@ const express = require("express");
 /**
  *  App Configuration
  */
+const app = express();
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
-const app = express();
 
 // start monitoring
 app.use(morgan("dev"));
-// handling cors errors
+// // handling cors errors
 app.use(cors());
-// parsing request data body
-//app.use(bodyParser.urlencoded({ extended: false }));
+// // parsing request data body
+// app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 /**
  * Routes Definitions
  */
+app.use("/login", loginRoutes);
 app.get("/", (req, res) => {
   res.status(200).send("Base IoT Mock API");
 });
-// app.use("/about", aboutRoutes);
 // app.use("/services", servicesRoutes);
 // app.use("/iotApi", iotApi);
 // app.use("/public", PublicRoutes);
