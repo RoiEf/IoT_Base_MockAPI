@@ -7,6 +7,7 @@ const express = require("express");
 const loginRT = require("./routes/loginRT");
 const updatesRT = require("./routes/updatesRT");
 const homeRT = require("./routes/homeRT");
+const basicRT = require("./routes/basicRT");
 
 /**
  *  App Configuration
@@ -15,7 +16,6 @@ const app = express();
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-
 
 // start monitoring
 app.use(morgan("dev"));
@@ -31,7 +31,7 @@ app.use(bodyParser.json());
 app.use("/", homeRT);
 app.use("/login", loginRT);
 app.use("/updates", updatesRT);
-// app.use("/iotApi", iotApi);
+app.use("/basic", basicRT);
 // app.use("/public", PublicRoutes);
 
 // error handling
