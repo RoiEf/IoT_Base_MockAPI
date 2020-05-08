@@ -17,7 +17,7 @@ exports.basic = async (req, res) => {
     device_mode = await storage.getItem("device_mode");
   }
 
-  console.log("device_mode: ", device_mode);
+  // console.log("device_mode: ", device_mode);
   return res.status(200).json({
     device_mode,
   });

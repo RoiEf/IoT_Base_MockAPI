@@ -8,7 +8,7 @@ const loginRT = require("./routes/loginRT");
 const updatesRT = require("./routes/updatesRT");
 const homeRT = require("./routes/homeRT");
 const basicRT = require("./routes/basicRT");
-
+const networkRT = require("./routes/networkRT");
 /**
  *  App Configuration
  */
@@ -32,7 +32,7 @@ app.use("/", homeRT);
 app.use("/login", loginRT);
 app.use("/updates", updatesRT);
 app.use("/basic", basicRT);
-// app.use("/public", PublicRoutes);
+app.use("/network", networkRT);
 
 // error handling
 // 404 Not found page errors
