@@ -5,14 +5,21 @@ exports.network = async (req, res) => {
   // await storage.setItem("ssid", "base_iot");
   // await storage.setItem("wifiPassword", "");
   let ssid;
-  let password;
+  let wifiPassword;
 
-  ssid = await storage.getItem("ssid");
-  password = await storage.getItem("wifiPassword");
+  if (req.body.cmd === "update") {
+    storage.setItem("ssid", req.body.ssid);
+    storage.setItem("wifiPassword", req.body.wifiPassword);
+    ssid = req.body.ssid;
+    wifiPassword = req.body.wifiPassword;
+  } else {
+    ssid = await storage.getItem("ssid");
+    wifiPassword = await storage.getItem("wifiPassword");
+  }
 
   // console.log("device_mode: ", device_mode);
   return res.status(200).json({
     ssid,
-    password,
+    wifiPassword,
   });
 };
