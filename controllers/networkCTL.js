@@ -8,6 +8,8 @@ exports.network = async (req, res) => {
   let wifiPassword;
 
   if (req.body.cmd === "update") {
+    console.log("wifi updating");
+    console.log("req.body: ", req.body);
     storage.setItem("ssid", req.body.ssid);
     storage.setItem("wifiPassword", req.body.wifiPassword);
     ssid = req.body.ssid;
@@ -17,7 +19,8 @@ exports.network = async (req, res) => {
     wifiPassword = await storage.getItem("wifiPassword");
   }
 
-  // console.log("device_mode: ", device_mode);
+  console.log("ssid: ", ssid);
+  console.log("wifiPassword: ", wifiPassword);
   return res.status(200).json({
     ssid,
     wifiPassword,

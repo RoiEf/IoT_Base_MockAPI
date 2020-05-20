@@ -33,6 +33,7 @@ app.use("/login", loginRT);
 app.use("/updates", updatesRT);
 app.use("/basic", basicRT);
 app.use("/network", networkRT);
+app.use("/wifi", networkRT);
 
 // error handling
 // 404 Not found page errors
