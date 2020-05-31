@@ -14,7 +14,8 @@ const networkRT = require("./routes/networkRT");
  */
 const app = express();
 const morgan = require("morgan");
-const bodyParser = require("body-parser");
+// const bodyParser = require("body-parser");
+const formidableMiddleware = require("express-formidable");
 const cors = require("cors");
 
 // start monitoring
@@ -23,8 +24,8 @@ app.use(morgan("dev"));
 app.use(cors());
 // // parsing request data body
 // app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-
+// app.use(bodyParser.json());
+app.use(formidableMiddleware());
 /**
  * Routes Definitions
  */

@@ -9,7 +9,7 @@ exports.login = async (req, res) => {
   // console.log("password: ", password);
 
   //   console.log("userName: ", req.body);
-  if (req.body.userName === userName && req.body.password === password) {
+  if (req.fields.userName === userName && req.fields.password === password) {
     return res.status(200).json({
       message: "Auth sucess",
     });

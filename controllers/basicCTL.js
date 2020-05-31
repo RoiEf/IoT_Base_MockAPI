@@ -5,8 +5,8 @@ exports.basic = async (req, res) => {
   // await storage.setItem("device_mode", "AP");
   let device_mode;
 
-  if (req.body.cmd === "update") {
-    if (req.body.device_mode) {
+  if (req.fields.cmd === "update") {
+    if (req.fields.device_mode) {
       storage.setItem("device_mode", "AP");
       device_mode = "AP";
     } else {

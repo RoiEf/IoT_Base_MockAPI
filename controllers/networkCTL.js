@@ -7,13 +7,13 @@ exports.network = async (req, res) => {
   let ssid;
   let wifiPassword;
 
-  if (req.body.cmd === "update") {
+  if (req.fields.cmd === "update") {
     console.log("wifi updating");
-    console.log("req.body: ", req.body);
-    storage.setItem("ssid", req.body.ssid);
-    storage.setItem("wifiPassword", req.body.wifiPassword);
-    ssid = req.body.ssid;
-    wifiPassword = req.body.wifiPassword;
+    console.log("req.body: ", req.fields);
+    storage.setItem("ssid", req.fields.ssid);
+    storage.setItem("wifiPassword", req.fields.wifiPassword);
+    ssid = req.fields.ssid;
+    wifiPassword = req.fields.wifiPassword;
   } else {
     ssid = await storage.getItem("ssid");
     wifiPassword = await storage.getItem("wifiPassword");
