@@ -5,8 +5,8 @@ exports.login = async (req, res) => {
   // await storage.setItem("password", "12345");
   let userName = await storage.getItem("userName");
   let password = await storage.getItem("password");
-  // console.log("userName: ", userName);
-  // console.log("password: ", password);
+  console.log("userName: ", userName);
+  console.log("password: ", password);
 
   //   console.log("userName: ", req.body);
   if (req.fields.userName === userName && req.fields.password === password) {
