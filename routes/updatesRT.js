@@ -1,9 +1,11 @@
 const express = require("express");
 const router = express.Router();
+const CheckAuth = require("../checkAuth");
+
 const UpdatesCTLS = require("../controllers/updatesCTL");
 
-router.post("/firmware", UpdatesCTLS.firmware);
-router.post("/spa", UpdatesCTLS.spa);
-router.post("/password", UpdatesCTLS.password);
+router.post("/firmware", CheckAuth.checkAuth, UpdatesCTLS.firmware);
+router.post("/spa", CheckAuth.checkAuth, UpdatesCTLS.spa);
+router.post("/password", CheckAuth.checkAuth, UpdatesCTLS.password);
 
 module.exports = router;
