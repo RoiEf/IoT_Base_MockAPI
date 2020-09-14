@@ -36,10 +36,22 @@ exports.network = async (req, res) => {
     storage.setItem("ssid", req.fields.ssid);
     storage.setItem("wifiPassword", req.fields.wifiPassword);
 
-    device_mode = await storage.getItem("device_mode");
-    dhcp = await storage.getItem("dhcpMode");
     ssid = req.fields.ssid;
     wifiPassword = req.fields.wifiPassword;
+    device_mode = await storage.getItem("device_mode");
+    dhcp = await storage.getItem("dhcpMode");
+    ip1 = await storage.getItem("ip1");
+    ip2 = await storage.getItem("ip2");
+    ip3 = await storage.getItem("ip3");
+    ip4 = await storage.getItem("ip4");
+    sm1 = await storage.getItem("sm1");
+    sm2 = await storage.getItem("sm2");
+    sm3 = await storage.getItem("sm3");
+    sm4 = await storage.getItem("sm4");
+    dg1 = await storage.getItem("dg1");
+    dg2 = await storage.getItem("dg2");
+    dg3 = await storage.getItem("dg3");
+    dg4 = await storage.getItem("dg4");
   } else if (req.fields.cmd === "updateDHCP") {
     console.log("DHCP updating");
     console.log("req.body: ", req.fields);
