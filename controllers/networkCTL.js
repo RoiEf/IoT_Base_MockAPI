@@ -1,5 +1,64 @@
 const storage = require("node-persist");
 
+const generateRandomString = function () {
+  let length = Math.floor(Math.random() * 10 + 1);
+  if (length < 6) {
+    length = 6;
+  }
+  return Math.random().toString(20).substring(2, length);
+};
+
+exports.scan = async (req, res) => {
+  let message;
+  let networks = [];
+
+  let n = Math.floor(Math.random() * 11);
+  if (n > 0) {
+    // let obj = {};
+    let SSID = "";
+    let auth = false;
+    let signal = Math.floor(Math.random() * 5 + 1);
+
+    await storage.init();
+    for (let i = 0; i <= n; i++) {
+      switch (i) {
+        case 0:
+          SSID = "testnet1";
+          auth = true;
+          networks.push({ SSID, auth, signal });
+          break;
+        case 1:
+          SSID = "testnet2";
+          auth = true;
+          signal = Math.floor(Math.random() * 5 + 1);
+          networks.push({ SSID, auth, signal });
+          break;
+
+        default:
+          SSID = generateRandomString();
+          let val = Math.floor(Math.random() * 9);
+          if (val > 0) {
+            auth = true;
+          } else {
+            auth = false;
+          }
+          signal = Math.floor(Math.random() * 5 + 1);
+          // obj = { SSID, auth, signal };
+          networks.push({ SSID, auth, signal });
+          break;
+      }
+    }
+    message = `${n} Networks found`;
+  } else {
+    message = "No Networks found";
+  }
+
+  return res.status(200).json({
+    message,
+    networks,
+  });
+};
+
 exports.network = async (req, res) => {
   await storage.init(/* options ... */);
   // START await storage.setItem(); INIT ITEMS RUN ONLY ONCE
@@ -157,8 +216,17 @@ exports.network = async (req, res) => {
     ssid,
     wifiPassword,
     dhcp,
-    ip1, ip2, ip3, ip4,
-    sm1, sm2, sm3, sm4,
-    dg1, dg2, dg3, dg4,
+    ip1,
+    ip2,
+    ip3,
+    ip4,
+    sm1,
+    sm2,
+    sm3,
+    sm4,
+    dg1,
+    dg2,
+    dg3,
+    dg4,
   });
 };
