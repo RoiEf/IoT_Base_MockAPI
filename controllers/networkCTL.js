@@ -1,9 +1,9 @@
 const storage = require("node-persist");
 
 const generateRandomString = function () {
-  let length = Math.floor(Math.random() * 10 + 1);
-  if (length < 6) {
-    length = 6;
+  let length = Math.floor(Math.random() * 12 + 1);
+  if (length < 8) {
+    length = 8;
   }
   return Math.random().toString(20).substring(2, length);
 };
