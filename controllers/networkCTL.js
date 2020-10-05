@@ -19,33 +19,48 @@ exports.scan = async (req, res) => {
     let auth = false;
     let signal = Math.floor(Math.random() * 5 + 1);
 
-    await storage.init();
-    for (let i = 0; i <= n; i++) {
-      switch (i) {
-        case 0:
-          SSID = "testnet1";
+    // await storage.init();
+    if (n === 3) {
+      for (let i = 0; i < 3; i++) {
+        SSID = generateRandomString();
+        let val = Math.floor(Math.random() * 9);
+        if (val > 0) {
           auth = true;
-          networks.push({ SSID, auth, signal });
-          break;
-        case 1:
-          SSID = "testnet2";
-          auth = true;
-          signal = Math.floor(Math.random() * 5 + 1);
-          networks.push({ SSID, auth, signal });
-          break;
-
-        default:
-          SSID = generateRandomString();
-          let val = Math.floor(Math.random() * 9);
-          if (val > 0) {
+        } else {
+          auth = false;
+        }
+        signal = Math.floor(Math.random() * 5 + 1);
+        // obj = { SSID, auth, signal };
+        networks.push({ SSID, auth, signal });
+      }
+    } else {
+      for (let i = 0; i <= n; i++) {
+        switch (i) {
+          case 0:
+            SSID = "testnet1";
             auth = true;
-          } else {
-            auth = false;
-          }
-          signal = Math.floor(Math.random() * 5 + 1);
-          // obj = { SSID, auth, signal };
-          networks.push({ SSID, auth, signal });
-          break;
+            networks.push({ SSID, auth, signal });
+            break;
+          case 1:
+            SSID = "testnet2";
+            auth = true;
+            signal = Math.floor(Math.random() * 5 + 1);
+            networks.push({ SSID, auth, signal });
+            break;
+
+          default:
+            SSID = generateRandomString();
+            let val = Math.floor(Math.random() * 9);
+            if (val > 0) {
+              auth = true;
+            } else {
+              auth = false;
+            }
+            signal = Math.floor(Math.random() * 5 + 1);
+            // obj = { SSID, auth, signal };
+            networks.push({ SSID, auth, signal });
+            break;
+        }
       }
     }
     message = `${n} Networks found`;
