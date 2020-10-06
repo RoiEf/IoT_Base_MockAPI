@@ -13,6 +13,7 @@ exports.scan = async (req, res) => {
   let networks = [];
 
   let n = Math.floor(Math.random() * 11);
+  // console.log("n: ", n);
   if (n > 0) {
     // let obj = {};
     let SSID = "";
@@ -34,7 +35,7 @@ exports.scan = async (req, res) => {
         networks.push({ SSID, auth, signal });
       }
     } else {
-      for (let i = 0; i <= n; i++) {
+      for (let i = 0; i < n; i++) {
         switch (i) {
           case 0:
             SSID = "testnet1";
@@ -105,8 +106,8 @@ exports.network = async (req, res) => {
   let message;
 
   if (req.fields.cmd === "update") {
-    console.log("wifi updating");
-    console.log("req.body: ", req.fields);
+    // console.log("wifi updating");
+    // console.log("req.body: ", req.fields);
     storage.setItem("ssid", req.fields.ssid);
     storage.setItem("wifiPassword", req.fields.wifiPassword);
 
@@ -127,14 +128,14 @@ exports.network = async (req, res) => {
     dg3 = await storage.getItem("dg3");
     dg4 = await storage.getItem("dg4");
   } else if (req.fields.cmd === "updateDHCP") {
-    console.log("DHCP updating");
-    console.log("req.body: ", req.fields);
+    // console.log("DHCP updating");
+    // console.log("req.body: ", req.fields);
 
     if (req.fields.dhcp) {
-      storage.setItem("dhcpMode", "DHCP");
+      // storage.setItem("dhcpMode", "DHCP");
       dhcp = "DHCP";
     } else {
-      storage.setItem("dhcpMode", "STATIC");
+      // storage.setItem("dhcpMode", "STATIC");
       dhcp = "STATIC";
     }
 
@@ -142,8 +143,8 @@ exports.network = async (req, res) => {
     ssid = await storage.getItem("ssid");
     wifiPassword = await storage.getItem("wifiPassword");
   } else if (req.fields.cmd === "updateStaticIP") {
-    console.log("Static IP updating");
-    console.log("req.body: ", req.fields);
+    // console.log("Static IP updating");
+    // console.log("req.body: ", req.fields);
 
     ip1 = req.fields.ip1;
     ip2 = req.fields.ip2;
@@ -218,13 +219,13 @@ exports.network = async (req, res) => {
     dg4 = await storage.getItem("dg4");
   }
 
-  console.log("device_mode: ", device_mode);
-  console.log("ssid: ", ssid);
-  console.log("wifiPassword: ", wifiPassword);
-  console.log("dhcpMode: ", dhcp);
-  console.log("ip1: ", ip1);
-  console.log("sm1: ", sm1);
-  console.log("dg1: ", dg1);
+  // console.log("device_mode: ", device_mode);
+  // console.log("ssid: ", ssid);
+  // console.log("wifiPassword: ", wifiPassword);
+  // console.log("dhcpMode: ", dhcp);
+  // console.log("ip1: ", ip1);
+  // console.log("sm1: ", sm1);
+  // console.log("dg1: ", dg1);
   return res.status(200).json({
     message,
     device_mode,
