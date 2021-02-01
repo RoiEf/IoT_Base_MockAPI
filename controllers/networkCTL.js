@@ -127,6 +127,8 @@ exports.network = async (req, res) => {
     dg2 = await storage.getItem("dg2");
     dg3 = await storage.getItem("dg3");
     dg4 = await storage.getItem("dg4");
+    SSID_IN_Client = await storage.getItem("SSID_IN_Client");
+    Auth_IN_Client = await storage.getItem("Auth_IN_Client");
   } else if (req.fields.cmd === "updateDHCP") {
     // console.log("DHCP updating");
     // console.log("req.body: ", req.fields);
@@ -142,6 +144,8 @@ exports.network = async (req, res) => {
     device_mode = await storage.getItem("device_mode");
     ssid = await storage.getItem("ssid");
     wifiPassword = await storage.getItem("wifiPassword");
+    SSID_IN_Client = await storage.getItem("SSID_IN_Client");
+    Auth_IN_Client = await storage.getItem("Auth_IN_Client");
   } else if (req.fields.cmd === "updateStaticIP") {
     // console.log("Static IP updating");
     // console.log("req.body: ", req.fields);
@@ -175,6 +179,8 @@ exports.network = async (req, res) => {
     ssid = await storage.getItem("ssid");
     wifiPassword = await storage.getItem("wifiPassword");
     dhcp = await storage.getItem("dhcpMode");
+    SSID_IN_Client = await storage.getItem("SSID_IN_Client");
+    Auth_IN_Client = await storage.getItem("Auth_IN_Client");
   } else if (req.fields.cmd === "updateDeviceMode") {
     if (req.fields.wifiAP) {
       storage.setItem("device_mode", "AP");
@@ -185,6 +191,35 @@ exports.network = async (req, res) => {
     }
 
     message = "Device Mode Update sucess";
+    ssid = await storage.getItem("ssid");
+    wifiPassword = await storage.getItem("wifiPassword");
+    dhcp = await storage.getItem("dhcpMode");
+    ip1 = await storage.getItem("ip1");
+    ip2 = await storage.getItem("ip2");
+    ip3 = await storage.getItem("ip3");
+    ip4 = await storage.getItem("ip4");
+    sm1 = await storage.getItem("sm1");
+    sm2 = await storage.getItem("sm2");
+    sm3 = await storage.getItem("sm3");
+    sm4 = await storage.getItem("sm4");
+    dg1 = await storage.getItem("dg1");
+    dg2 = await storage.getItem("dg2");
+    dg3 = await storage.getItem("dg3");
+    dg4 = await storage.getItem("dg4");
+    SSID_IN_Client = await storage.getItem("SSID_IN_Client");
+    Auth_IN_Client = await storage.getItem("Auth_IN_Client");
+  } else if (req.fields.cmd === "updateSSIDinSTA") {
+    console.log("updateSSIDinSTA");
+    message = "SSIDinSTA Update sucess";
+
+    console.log("req.body: ", req.fields);
+    storage.setItem("SSID_IN_Client", req.fields.SSID_IN_Client);
+    storage.setItem("Auth_IN_Client", req.fields.Auth_IN_Client);
+
+    SSID_IN_Client = req.fields.SSID_IN_Client;
+    Auth_IN_Client = req.fields.Auth_IN_Client;
+
+    device_mode = await storage.getItem("device_mode");
     ssid = await storage.getItem("ssid");
     wifiPassword = await storage.getItem("wifiPassword");
     dhcp = await storage.getItem("dhcpMode");
@@ -217,6 +252,8 @@ exports.network = async (req, res) => {
     dg2 = await storage.getItem("dg2");
     dg3 = await storage.getItem("dg3");
     dg4 = await storage.getItem("dg4");
+    SSID_IN_Client = await storage.getItem("SSID_IN_Client");
+    Auth_IN_Client = await storage.getItem("Auth_IN_Client");
   }
 
   // console.log("device_mode: ", device_mode);
@@ -244,5 +281,7 @@ exports.network = async (req, res) => {
     dg2,
     dg3,
     dg4,
+    SSID_IN_Client,
+    Auth_IN_Client,
   });
 };
