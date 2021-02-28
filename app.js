@@ -9,6 +9,8 @@ const updatesRT = require("./routes/updatesRT");
 const homeRT = require("./routes/homeRT");
 const basicRT = require("./routes/basicRT");
 const networkRT = require("./routes/networkRT");
+
+const temprature = require("./routes/tempratureRT");
 /**
  *  App Configuration
  */
@@ -35,6 +37,8 @@ app.use("/updates", updatesRT);
 app.use("/basic", basicRT);
 app.use("/network", networkRT);
 app.use("/wifi", networkRT);
+
+app.use("/temprature", temprature);
 
 // error handling
 // 404 Not found page errors
