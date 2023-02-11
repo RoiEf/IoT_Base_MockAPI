@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/RoiEf/IoT_Base_MockAPI#readme",
   "devDependencies": {
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.20"
   },
   "dependencies": {
     "cors": "^2.8.5",
